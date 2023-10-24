@@ -1,56 +1,30 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pie Chart con Canvas</title>
-    <style>
-        canvas {
-            border: 1px solid #000;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles/style.css">
+  <title>Platzriv - Jueguito online de carreras y calaveras</title>
 </head>
 <body>
-    <canvas id="pieChart" width="300" height="300"></canvas>
+    <div class="game-container">
+            <canvas id="game"></canvas>
+        
+            <div class="btns">
+                <button type="button" id="up">Arriba</button>
+                <button type="button" id="left">Izquierda</button>
+                <button type="button" id="right">Derecha</button>
+                <button type="button" id="down">Abajo</button>
+            </div>
 
-    <script>
-        // Obtén el canvas y su contexto
-        const canvas = document.getElementById('pieChart');
-        const ctx = canvas.getContext('2d');
+            <div class="messages">
+                <!-- TODO -->
+                <p>Párrafo de ejemplo</p>
+            </div>
+    </div>
 
-        // Datos para el pie chart (porcentajes)
-        const data = [30, 50, 20]; // Por ejemplo: tres secciones de 30%, 50% y 20%
-
-        // Colores para las secciones
-        const colors = ['#FF5733', '#33FF57', '#5733FF']; // Puedes elegir tus propios colores
-
-        // Coordenadas del centro del gráfico
-        const centerX = canvas.width / 2;
-        const centerY = canvas.height / 2;
-
-        // Radio del círculo
-        const radius = Math.min(centerX, centerY);
-
-        // Función para dibujar el pie chart
-        function drawPieChart() {
-            let startAngle = 0;
-
-            for (let i = 0; i < data.length; i++) {
-                const sliceAngle = 2 * Math.PI * (data[i] / 100);
-
-                ctx.fillStyle = colors[i];
-                ctx.beginPath();
-                ctx.moveTo(centerX, centerY);
-                ctx.arc(centerX, centerY, radius, startAngle, startAngle + sliceAngle);
-                ctx.closePath();
-                ctx.fill();
-
-                startAngle += sliceAngle;
-            }
-        }
-
-        // Llama a la función para dibujar el pie chart
-        drawPieChart();
-    </script>
+    <script src="../js/maps.js"></script>
+    <script src="../js/game.js"></script>
 </body>
 </html>
